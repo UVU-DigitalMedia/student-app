@@ -16,45 +16,55 @@ angular.module('studentApp.states', ['ionic'])
 
     // Each tab has its own nav history stack:
 
-    .state('tab.dash', {
-      url: '/dash',
+    .state('tab.login', {
+      url: '/login',
       views: {
-        'tab-dash': {
-          templateUrl: 'partials/tabs/dash.html',
-          controller: 'DashCtrl'
+        'tab-login': {
+          templateUrl: 'partials/tabs/login.html',
+          controller: 'LoginCtrl'
         }
       }
     })
 
-    .state('tab.friends', {
-      url: '/friends',
+    .state('tab.question', {
+      url: '/question',
       views: {
-        'tab-friends': {
-          templateUrl: 'partials/tabs/friends.html',
-          controller: 'FriendsCtrl'
-        }
-      }
-    })
-    .state('tab.friend-detail', {
-      url: '/friend/:friendId',
-      views: {
-        'tab-friends': {
-          templateUrl: 'partials/tabs/friend-detail.html',
-          controller: 'FriendDetailCtrl'
-        }
-      }
-    })
-
-    .state('tab.account', {
-      url: '/account',
-      views: {
-        'tab-account': {
-          templateUrl: 'partials/tabs/account.html',
-          controller: 'AccountCtrl'
+        'tab-login': {
+          templateUrl: 'partials/tabs/question.html',
+          controller: 'QuestionCtrl'
         }
       }
     });
 
+    // .state('tab.friends', {
+    //   url: '/friends',
+    //   views: {
+    //     'tab-friends': {
+    //       templateUrl: 'partials/tabs/friends.html',
+    //       controller: 'FriendsCtrl'
+    //     }
+    //   }
+    // })
+    // .state('tab.friend-detail', {
+    //   url: '/friend/:friendId',
+    //   views: {
+    //     'tab-friends': {
+    //       templateUrl: 'partials/tabs/friend-detail.html',
+    //       controller: 'FriendDetailCtrl'
+    //     }
+    //   }
+    // })
+    //
+    // .state('tab.account', {
+    //   url: '/account',
+    //   views: {
+    //     'tab-account': {
+    //       templateUrl: 'partials/tabs/account.html',
+    //       controller: 'AccountCtrl'
+    //     }
+    //   }
+    // });
+
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/dash');
+  $urlRouterProvider.otherwise('/tab/login');
 });

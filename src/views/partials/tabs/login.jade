@@ -1,0 +1,6 @@
+ion-view(title='Login'): ion-content
+  .list
+    label.item.item-input.item-floating-label.center-floating-label
+      span.input-label UVID
+      input(type='tel', placeholder='UVID', ng-model='uvid')
+    button.item.button.button-full.button-positive(ng-click='login(uvid)') Login
