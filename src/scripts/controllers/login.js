@@ -1,5 +1,5 @@
 angular.module('studentApp.controllers')
-.controller('LoginCtrl', function ($scope, $state, student, loading) {
+.controller('LoginCtrl', function ($scope, $state, student, loading, alert) {
 
   student.logout().catch(function (err) {
     console.log(arguments);
@@ -9,12 +9,20 @@ angular.module('studentApp.controllers')
     loading.load();
     student.login(uvid).then(function (data) {
       if (data.success) {
-        $state.go('tab.question');
+        return student.question();
       } else {
         console.error(data);
       }
-    }).finally(function () {
+    })
+    .finally(function () {
       loading.unload();
+    })
+    .then(function (res) {
+      if (!res.question) {
+        return alert('You have answered all available questions. Check back later!');
+      } else {
+        $state.go('tab.question');
+      }
     });
   };
 

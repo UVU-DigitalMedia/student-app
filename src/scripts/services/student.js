@@ -1,10 +1,10 @@
 angular.module('studentApp.services')
-.factory('student', function ($http, $ionicPopup, $q) {
+.factory('student', function ($http, alert, $q) {
   var api     = 'http://localhost:3000/v1';
   var student = {};
 
   $http.get(api).error(function (err) {
-    $ionicPopup.alert({title: 'Could not connect to server'});
+    alert('Could not connect to server');
   });
 
   student.current = function () {
@@ -22,6 +22,10 @@ angular.module('studentApp.services')
 
   student.logout = function () {
     return $http.post(api + '/student/logout').then(returnData);
+  };
+
+  student.question = function () {
+    return $http.get(api + '/student/question').then(returnData);
   };
 
   function returnData(res) {

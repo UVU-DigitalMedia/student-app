@@ -2,6 +2,7 @@ angular.module('studentApp', [
   'ionic',
   'cordovaInit',
   'loading',
+  'alert',
   'studentApp.states',
   'studentApp.controllers',
   'studentApp.services'
