@@ -26,7 +26,7 @@ angular.module('studentApp.controllers')
       value['Other: ' + $scope.data.other] = true;
     }
     student.answer($scope.question._id, value).then(function (res) {
-      $scope.logout();
+      alert('Thank you for your submission!').finally($scope.logout);
     }).catch(function (err) {
       console.error(err);
     });
