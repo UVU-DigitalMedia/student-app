@@ -28,6 +28,14 @@ angular.module('studentApp.services')
     return $http.get(api + '/student/question').then(returnData);
   };
 
+  student.answer = function (qid, value) {
+    if (typeof value === 'object') {
+      value = Object.keys(value).filter(function (value) { return value; });
+    }
+    return $http.post(api + '/student/answer/' + qid, {value: value})
+      .then(returnData);
+  };
+
   function returnData(res) {
     return res.data;
   }

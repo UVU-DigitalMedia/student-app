@@ -1,2 +1,28 @@
-ion-view(title='Answer a Question'): ion-content
-  h1 Answer a Question
+ion-view(title='{{question.label}}'): ion-content.padding
+  h1 {{question.question}}
+  div(ng-switch='question.type')
+    //- Multiple Choice
+    .list(ng-switch-when='multipleChoice')
+      ion-radio(ng-model='data.value', ng-repeat='choice in question.choices track by $index', ng-value='choice')
+        span {{choice}}
+      label.item.item-input(ng-show="data.value === 'Other'")
+        input(type='text', data-ng-model='data.other', placeholder='Enter other value here')
+    //- Multiple Correct
+    .list(ng-switch-when='multipleCorrect')
+      ion-checkbox(ng-repeat='choice in question.choices track by $index', ng-value='choice', ng-model='data.value[choice]')
+        span {{choice}}
+      label.item.item-input(ng-show="data.value['Other']")
+        input(type='text', data-ng-model='data.other', placeholder='Enter other value here')
+    //- True/False
+    .list(ng-switch-when='trueFalse')
+      ion-radio(ng-value='true', ng-model='data.value') True
+      ion-radio(ng-value='false', ng-model='data.value') False
+    //- Short Answer
+    .list(ng-switch-when='shortAnswer')
+      label.item.item-input: input(type='text', placeholder='Your Answer', ng-model='data.value')
+    //- Essay
+    .list(ng-switch-when='essay')
+      label.item.item-input: textarea(ng-model='data.value', rows='10')
+    div(ng-switch-default) {{question.type}} is not supported
+  button.button.button-full.button-positive(ng-click='submit(data.value)') Submit
+  
