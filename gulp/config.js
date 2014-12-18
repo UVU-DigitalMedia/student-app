@@ -16,7 +16,7 @@ var config = {
   }
 };
 
-config.styles.path  = ['', config.styles.dir, config.styles.file].join('/');
-config.scripts.path = ['', config.scripts.dir, config.scripts.file].join('/');
+config.styles.path  = [config.styles.dir, config.styles.file].join('/');
+config.scripts.path = [config.scripts.dir, config.scripts.file].join('/');
 
 module.exports = config;

@@ -4,7 +4,9 @@
   "description": "student-app: An Ionic project",
   "private": true,
   "scripts": {
-    "postinstall": "bower i"
+    "postinstall": "bower i",
+    "build": "gulp build; ionic platform ios; ionic build ios; ionic emulate ios --target=\"iPad-2\";",
+    "export": "gulp build; ionic platform ios; ionic build ios; ionic run ios;"
   },
   "devDependencies": {
     "bower": "^1.3.3",

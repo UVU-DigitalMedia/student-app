@@ -1,6 +1,6 @@
 angular.module('studentApp.services')
 .factory('student', function ($http, alert, $q) {
-  var api     = 'http://localhost:3000/v1';
+  var api     = 'http://10.0.1.69:3000/v1';
   var student = {};
 
   $http.get(api).error(function (err) {
